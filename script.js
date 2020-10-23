@@ -281,6 +281,9 @@ var quest = questions[chosen];
 var answ = answers[chosen];
 var user_answ = "";
 
+var correct = 0;
+var incorrect = 0;
+
 if (chosen >= 119) {
   document.getElementById("prefix").innerHTML = "Vervollständige:";
 } else {
@@ -295,11 +298,18 @@ function checkAnswer() {
     document.getElementById("message").innerHTML = "Richtig!";
     document.getElementById("question").style =
       "font-weight: normal; color: green";
+    correct++;
   } else {
     document.getElementById("message").innerHTML = "Richtige Antwort: " + answ;
     document.getElementById("question").style =
       "font-weight: normal; color: #bd1c1c";
+    incorrect++;
   }
+  document.getElementById("stats").innerHTML =
+    correct.toString(10) +
+    " von " +
+    (correct + incorrect).toString(10) +
+    " richtig";
 }
 
 document.getElementById("answer").addEventListener("keyup", function (event) {

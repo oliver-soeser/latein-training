@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Lateinübung</title>
+    <link rel="icon" type="image/png" href="./favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <h1>Lateinübung</h1>
+  </head>
+  <body>
+    <h2 id="prefix">Übersetze:</h2>
+    <h2 id="question" style="font-weight: normal">Loading</h2>
+    <input autofocus id="answer" type="text" />
+    <br />
+    <br />
+    <button onclick="checkAnswer()" id="check" class="btn btn-1">
+      Überprüfen
+    </button>
+    <h3 id="message"></h3>
+  </body>
+  <footer>
+    <button onclick="nextQuestion()" id="next" class="btn btn-2">
+      Nächste Frage
+    </button>
+    <script src="./script.js"></script>
+  </footer>
+</html>

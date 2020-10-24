@@ -169,7 +169,7 @@ var answers = [
   "fragt",
   "antwortet",
   "dann",
-  "schreibt",
+  "schreit",
   "lobt",
   "was?",
   "lehrt",
@@ -276,6 +276,41 @@ var answers = [
   "amicae!",
   "amicis",
 ];
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+var points = [];
+
+for (var i = 0; i < questions.length; i++) {
+  points.push(0);
+}
+
+var points_string = getCookie("points");
+
+if (points_string != "") {
+  points = points_string.split(",");
+}
+
 var chosen = Math.floor(Math.random() * questions.length);
 var quest = questions[chosen];
 var answ = answers[chosen];
@@ -295,27 +330,51 @@ document.getElementById("question").innerHTML = quest;
 function checkAnswer() {
   user_answ = document.getElementById("answer").value;
   if (user_answ.toLowerCase() == answ.toLowerCase()) {
+    if (document.getElementById("message").innerHTML == "") {
+      correct++;
+      points[chosen] += 1;
+      setCookie("points", points.toString(), 365);
+      document.getElementById("problems").innerHTML = "Problemwörter";
+      for (var i = 0; i < points.length; i++) {
+        if (points[i] < 0) {
+          document.getElementById("problems").innerHTML +=
+            "<br>" + questions[i];
+        }
+      }
+    }
     document.getElementById("message").innerHTML = "Richtig!";
     document.getElementById("question").style =
       "font-weight: normal; color: green";
-    correct++;
   } else {
+    if (document.getElementById("message").innerHTML == "") {
+      incorrect++;
+      points[chosen] -= 1;
+      setCookie("points", points.toString(), 365);
+      document.getElementById("problems").innerHTML = "Problemwörter";
+      for (var i = 0; i < points.length; i++) {
+        if (points[i] < 0) {
+          document.getElementById("problems").innerHTML +=
+            "<br>" + questions[i];
+        }
+      }
+    }
     document.getElementById("message").innerHTML = "Richtige Antwort: " + answ;
     document.getElementById("question").style =
       "font-weight: normal; color: #bd1c1c";
-    incorrect++;
   }
   document.getElementById("stats").innerHTML =
     correct.toString(10) +
     " von " +
     (correct + incorrect).toString(10) +
-    " richtig";
+    " (" +
+    Math.round((correct / (correct + incorrect)) * 100).toString(10) +
+    "%) richtig";
 }
 
 document.getElementById("answer").addEventListener("keyup", function (event) {
   // Number 13 is the "Enter" key on the keyboard
   if (event.keyCode === 13) {
-    // Cancel the default action
+    // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
     if (document.getElementById("message").innerHTML == "") {
@@ -347,6 +406,11 @@ function setQuestion(n) {
   quest = questions[chosen];
   answ = answers[chosen];
   user_answ = "";
+  if (chosen >= 119) {
+    document.getElementById("prefix").innerHTML = "Vervollständige:";
+  } else {
+    document.getElementById("prefix").innerHTML = "Übersetze:";
+  }
   document.getElementById("question").innerHTML = quest;
   document.getElementById("question").style =
     "font-weight: normal; color: black";

@@ -325,6 +325,7 @@ var points_string = getCookie("points");
 
 if (points_string != "") {
   points = points_string.split(",");
+  document.getElementById("problems").innerHTML = "Problemwörter";
   for (var i = 0; i < points.length; i++) {
     if (points[i] < 0) {
       document.getElementById("problems").innerHTML += "<br>" + questions[i];
@@ -362,6 +363,9 @@ function checkAnswer() {
             "<br>" + questions[i];
         }
       }
+      if (document.getElementById("problems").innerHTML == "Problemwörter") {
+        document.getElementById("problems").innerHTML = "";
+      }
     }
     document.getElementById("message").innerHTML = "Richtig!";
     document.getElementById("question").style =
@@ -377,6 +381,9 @@ function checkAnswer() {
           document.getElementById("problems").innerHTML +=
             "<br>" + questions[i];
         }
+      }
+      if (document.getElementById("problems").innerHTML == "Problemwörter") {
+        document.getElementById("problems").innerHTML = "";
       }
     }
     document.getElementById("message").innerHTML = "Richtige Antwort: " + answ;

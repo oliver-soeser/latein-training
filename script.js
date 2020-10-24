@@ -290,6 +290,146 @@ var answers = [
   "amicis",
 ];
 
+var altAnswers1 = [
+  "Schule",
+  "hier",
+  "sitzt",
+  "Freundin",
+  "mein",
+  "ist",
+  "Schülerin",
+  "gut",
+  "immer",
+  "sind",
+  "und",
+  "Freund",
+  "sondern",
+  "Schüler",
+  "schlecht",
+  "fröhlich",
+  "oft",
+  "lacht",
+  "warum?",
+  "jetzt",
+  "nicht",
+  "Aufgabe",
+  "groß",
+  "daher",
+  "freut sich",
+  "lange",
+  "arbeitet",
+  "gern",
+  "fragt",
+  "antwortet",
+  "damals",
+  "ruft",
+  "lobt",
+  "was?",
+  "unterrichtet",
+  "wo?",
+  "schon",
+  "erwartet",
+  "betritt",
+  "sei gegrüßt",
+  "Lehrer",
+  "liebt",
+  "nicht nur - sondern auch",
+  "sogar",
+  "Zunge",
+  "lateinisch",
+  "Buch",
+  "griechisch",
+  "wie",
+  "hübsch",
+  "Wort",
+  "bei sich",
+  "denkt",
+  "Bub",
+  "Mädchen",
+  "weil",
+  "wer?",
+  "hat",
+  "schaut an",
+  "Auge",
+  "dein",
+  "ermahnt",
+  "erzürnt",
+  "Rom",
+  "durch",
+  "Straße",
+  "spazieren",
+  "viele",
+  "viel",
+  "Gebäude",
+  "sehen",
+  "und",
+  "hell",
+  "zeigen",
+  "Schauspiel",
+  "dort",
+  "Statue",
+  "Mann",
+  "Fragepartikel",
+  "sicherlich",
+  "Forum",
+  "römisch",
+  "Tempel",
+  "so",
+  "Gott",
+  "Göttin",
+  "vor",
+  "hinter",
+  "nur",
+  "an",
+  "über",
+  "mit",
+  "ohne",
+  "Frau",
+  "Freude",
+  "erzählen",
+  "die Römer",
+  "Vorrat",
+  "von",
+  "Erde",
+  "fremd",
+  "kämpfen",
+  "töten",
+  "gefallen",
+  "neu",
+  "ein anderer",
+  "der eine - der andere",
+  "Schwert",
+  "schließlich",
+  "übertreffen",
+  "falls",
+  "gut",
+  "Leben",
+  "schenken",
+  "für",
+  "ihr",
+  "von",
+  "vor",
+  "und nicht",
+  "o",
+  "s",
+  "t",
+  "mus",
+  "tis",
+  "nt",
+  "amica",
+  "amicae",
+  "amicae",
+  "amicam",
+  "amica!",
+  "amica",
+  "amicae",
+  "amicarum",
+  "amicis",
+  "amicas",
+  "amicae!",
+  "amicis",
+];
+
 function setCookie(cname, cvalue, exdays) {
   if (accept_cookies == false) {
     return;
@@ -327,6 +467,9 @@ if (points_string != "") {
   points = points_string.split(",");
   document.getElementById("problems").innerHTML = "Problemwörter";
   for (var i = 0; i < points.length; i++) {
+    if (i >= 119) {
+      continue;
+    }
     if (points[i] < 0) {
       document.getElementById("problems").innerHTML += "<br>" + questions[i];
     }
@@ -351,13 +494,19 @@ document.getElementById("question").innerHTML = quest;
 
 function checkAnswer() {
   user_answ = document.getElementById("answer").value;
-  if (user_answ.toLowerCase() == answ.toLowerCase()) {
+  if (
+    user_answ.toLowerCase() == answ.toLowerCase() ||
+    user_answ.toLowerCase() == altAnswers1[chosen].toLowerCase()
+  ) {
     if (document.getElementById("message").innerHTML == "") {
       correct++;
       points[chosen] += 1;
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {
+        if (i >= 119) {
+          continue;
+        }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
             "<br>" + questions[i];
@@ -368,6 +517,14 @@ function checkAnswer() {
       }
     }
     document.getElementById("message").innerHTML = "Richtig!";
+    if (altAnswers1[chosen] != answ) {
+      if (user_answ.toLowerCase() == answ.toLowerCase())
+        document.getElementById("message").innerHTML +=
+          "<br>Alternative Antwort: " + altAnswers1[chosen];
+      else
+        document.getElementById("message").innerHTML +=
+          "<br>Alternative Antwort: " + answ;
+    }
     document.getElementById("question").style =
       "font-weight: normal; color: green";
   } else {
@@ -377,6 +534,9 @@ function checkAnswer() {
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {
+        if (i >= 119) {
+          continue;
+        }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
             "<br>" + questions[i];
@@ -396,7 +556,25 @@ function checkAnswer() {
     (correct + incorrect).toString(10) +
     " (" +
     Math.round((correct / (correct + incorrect)) * 100).toString(10) +
-    "%) richtig";
+    "%) richtig (Note " +
+    percentToGrade(
+      Math.round((correct / (correct + incorrect)) * 100)
+    ).toString(10) +
+    ")";
+}
+
+function percentToGrade(percent) {
+  if (percent >= 87) {
+    return 1;
+  } else if (percent >= 75) {
+    return 2;
+  } else if (percent >= 63) {
+    return 3;
+  } else if (percent >= 50) {
+    return 4;
+  } else {
+    return 5;
+  }
 }
 
 document.getElementById("answer").addEventListener("keyup", function (event) {

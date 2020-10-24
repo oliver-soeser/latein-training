@@ -1,3 +1,16 @@
+var accept_cookies = false;
+
+function acceptCookies() {
+  accept_cookies = true;
+  removeBanner();
+}
+
+function removeBanner() {
+  document
+    .getElementById("cookie-banner")
+    .parentNode.removeChild(document.getElementById("cookie-banner"));
+}
+
 var questions = [
   "schola",
   "hic",
@@ -278,6 +291,9 @@ var answers = [
 ];
 
 function setCookie(cname, cvalue, exdays) {
+  if (accept_cookies == false) {
+    return;
+  }
   var d = new Date();
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
   var expires = "expires=" + d.toUTCString();
@@ -309,6 +325,11 @@ var points_string = getCookie("points");
 
 if (points_string != "") {
   points = points_string.split(",");
+  for (var i = 0; i < points.length; i++) {
+    if (points[i] < 0) {
+      document.getElementById("problems").innerHTML += "<br>" + questions[i];
+    }
+  }
 }
 
 var chosen = Math.floor(Math.random() * questions.length);

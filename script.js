@@ -149,6 +149,18 @@ var questions = [
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, ?, amicae!, amicis",
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, amicas, ?, amicis",
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, amicas, amicae!, ?",
+  /*"?, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, ?, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, ?, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, ?, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, ?!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, ?, amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, ?, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, amici, ?, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, ?, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, ?, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, ?!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, ?",*/
 ];
 var answers = [
   "Schule",
@@ -471,7 +483,8 @@ if (points_string != "") {
       continue;
     }
     if (points[i] < 0) {
-      document.getElementById("problems").innerHTML += "<br>" + questions[i];
+      document.getElementById("problems").innerHTML +=
+        "<br>" + questions[i] + " = " + answers[i];
     }
   }
 }
@@ -509,7 +522,7 @@ function checkAnswer() {
         }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
-            "<br>" + questions[i];
+            "<br>" + questions[i] + " = " + answers[i];
         }
       }
       if (document.getElementById("problems").innerHTML == "Problemwörter") {
@@ -539,7 +552,7 @@ function checkAnswer() {
         }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
-            "<br>" + questions[i];
+            "<br>" + questions[i] + " = " + answers[i];
         }
       }
       if (document.getElementById("problems").innerHTML == "Problemwörter") {

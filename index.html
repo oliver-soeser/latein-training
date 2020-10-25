@@ -2,15 +2,25 @@
 
 <html>
   <head>
-    <div id="cookie-banner">
+    <div id="cookie-banner" style="margin-top: 5px">
       <p>
         Diese Webseite speichert ihre Latein-Statistiken mithilfe von Cookies.
-        <button class="acceptBtn" onclick="acceptCookies()">Zustimmen</button>
-        <button class="declineBtn" onclick="removeBanner()">Ablehnen</button>
+        <button class="btn btn-success" onclick="acceptCookies()">
+          Zustimmen
+        </button>
+        <button class="btn btn-danger" onclick="removeBanner()">
+          Ablehnen
+        </button>
       </p>
     </div>
     <title>Lateinübung</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Lato"
       rel="stylesheet"
@@ -18,24 +28,40 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <h1>Lateinübung</h1>
+    <br />
   </head>
   <body>
-    <h2 id="prefix">Übersetze:</h2>
-    <h2 id="question" style="font-weight: normal">Loading</h2>
+    <h3 id="prefix">Übersetze:</h2>
+    <h3 id="question" style="font-weight: normal">Loading</h2>
+    <br />
     <input autofocus id="answer" type="text" />
     <br />
     <br />
-    <button onclick="checkAnswer()" id="check" class="btn btn-1">
+    <button onclick="checkAnswer()" id="check" class="btn btn-primary btn-lg">
       Überprüfen
     </button>
-    <h3 id="message"></h3>
+    <h4 id="message"><br><br></h4>
   </body>
   <footer>
-    <h3 id="problems" style="color: black"></h3>
-    <h4 id="stats" style="color: black">0 von 0 (0%) richtig</h4>
-    <button onclick="nextQuestion()" id="next" class="btn btn-2">
+    <button onclick="nextQuestion()" id="next" class="btn btn-success btn-lg">
       Nächste Frage
     </button>
+    <br />
+    <br />
+    <h4 id="stats" style="color: black">0 von 0 (0%) richtig</h4>
+    <br />
+    <br />
+    <h3 id="problems" style="color: black"></h3>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"
+    ></script>
     <script src="./script.js"></script>
   </footer>
 </html>

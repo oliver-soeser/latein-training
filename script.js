@@ -149,18 +149,18 @@ var questions = [
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, ?, amicae!, amicis",
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, amicas, ?, amicis",
   "amica, amicae, amicae, amicam, amica!, amicā<br>amicae, amicarum, amicis, amicas, amicae!, ?",
-  /*"?, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, ?, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, ?, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, ?, amice!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, ?!, amico, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, ?, amici, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, ?, amicorum, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, amici, ?, amicis, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, ?, amicos, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, ?, amici!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, ?!, amicis",
-  "amicus, amici, amico, amicum, amice!, amico, amici, amicorum, amicis, amicos, amici!, ?",*/
+  "?, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, ?, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, ?, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, ?, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, ?, amico<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, ?<br>amici, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>?, amicorum, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>amici, ?, amicis, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, ?, amicos, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, ?, amici!, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, ?, amicis",
+  "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, ?",
 ];
 var answers = [
   "Schule",
@@ -299,6 +299,18 @@ var answers = [
   "amicis",
   "amicas",
   "amicae!",
+  "amicis",
+  "amicus",
+  "amici",
+  "amico",
+  "amicum",
+  "amice!",
+  "amico",
+  "amici",
+  "amicorum",
+  "amicis",
+  "amicos",
+  "amici!",
   "amicis",
 ];
 
@@ -440,6 +452,18 @@ var altAnswers1 = [
   "amicas",
   "amicae!",
   "amicis",
+  "amicus",
+  "amici",
+  "amico",
+  "amicum",
+  "amice!",
+  "amico",
+  "amici",
+  "amicorum",
+  "amicis",
+  "amicos",
+  "amici!",
+  "amicis",
 ];
 
 function setCookie(cname, cvalue, exdays) {
@@ -511,7 +535,7 @@ function checkAnswer() {
     user_answ.toLowerCase() == answ.toLowerCase() ||
     user_answ.toLowerCase() == altAnswers1[chosen].toLowerCase()
   ) {
-    if (document.getElementById("message").innerHTML == "") {
+    if (document.getElementById("message").innerHTML == "<br><br>") {
       correct++;
       points[chosen] += 1;
       setCookie("points", points.toString(), 365);
@@ -529,19 +553,19 @@ function checkAnswer() {
         document.getElementById("problems").innerHTML = "";
       }
     }
-    document.getElementById("message").innerHTML = "Richtig!";
+    document.getElementById("message").innerHTML = "Richtig!<br><br>";
     if (altAnswers1[chosen] != answ) {
       if (user_answ.toLowerCase() == answ.toLowerCase())
         document.getElementById("message").innerHTML +=
-          "<br>Alternative Antwort: " + altAnswers1[chosen];
+          "Alternative Antwort: " + altAnswers1[chosen];
       else
         document.getElementById("message").innerHTML +=
-          "<br>Alternative Antwort: " + answ;
+          "Alternative Antwort: " + answ;
     }
     document.getElementById("question").style =
       "font-weight: normal; color: green";
   } else {
-    if (document.getElementById("message").innerHTML == "") {
+    if (document.getElementById("message").innerHTML == "<br><br>") {
       incorrect++;
       points[chosen] -= 1;
       setCookie("points", points.toString(), 365);
@@ -559,7 +583,8 @@ function checkAnswer() {
         document.getElementById("problems").innerHTML = "";
       }
     }
-    document.getElementById("message").innerHTML = "Richtige Antwort: " + answ;
+    document.getElementById("message").innerHTML =
+      "Richtige Antwort: " + answ + "<br><br>";
     document.getElementById("question").style =
       "font-weight: normal; color: #bd1c1c";
   }
@@ -596,7 +621,7 @@ document.getElementById("answer").addEventListener("keyup", function (event) {
     // Cancel the default action, if needed
     event.preventDefault();
     // Trigger the button element with a click
-    if (document.getElementById("message").innerHTML == "") {
+    if (document.getElementById("message").innerHTML == "<br><br>") {
       document.getElementById("check").click();
     } else {
       document.getElementById("next").click();
@@ -617,7 +642,7 @@ function nextQuestion() {
   document.getElementById("question").innerHTML = quest;
   document.getElementById("question").style =
     "font-weight: normal; color: black";
-  document.getElementById("message").innerHTML = "";
+  document.getElementById("message").innerHTML = "<br><br>";
   document.getElementById("answer").value = "";
 }
 function setQuestion(n) {
@@ -633,6 +658,6 @@ function setQuestion(n) {
   document.getElementById("question").innerHTML = quest;
   document.getElementById("question").style =
     "font-weight: normal; color: black";
-  document.getElementById("message").innerHTML = "";
+  document.getElementById("message").innerHTML = "<br><br>";
   document.getElementById("answer").value = "";
 }

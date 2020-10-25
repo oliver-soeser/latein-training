@@ -161,6 +161,42 @@ var questions = [
   "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, ?, amici!, amicis",
   "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, ?, amicis",
   "amicus, amici, amico, amicum, amice!, amico<br>amici, amicorum, amicis, amicos, amici!, ?",
+  "?, magistri, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, ?, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, ?, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, ?, magister!, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, ?, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, ?<br>magistri, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>?, magistrorum, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>magistri, ?, magistris, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, ?, magistros, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, ?, magistri!, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, magistros, ?, magistris",
+  "magister, magistri, magistro, magistrum, magister!, magistro<br>magistri, magistrorum, magistris, magistros, magistri!, ?",
+  "?, pueri, puero, puerum, puer!, puero<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, ?, puero, puerum, puer!, puero<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, ?, puerum, puer!, puero<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, ?, puer!, puero<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, ?, puero<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, ?<br>pueri, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>?, puerorum, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>pueri, ?, pueris, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>pueri, puerorum, ?, pueros, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>pueri, puerorum, pueris, ?, pueri!, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>pueri, puerorum, pueris, pueros, ?, pueris",
+  "puer, pueri, puero, puerum, puer!, puero<br>pueri, puerorum, pueris, pueros, pueri!, ?",
+  "?, templi, templo, templum, templum!, templo<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, ?, templo, templum, templum!, templo<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, templi, ?, templum, templum!, templo<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, templi, templo, ?, templum!, templo<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, templi, templo, templum, ?, templo<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, templi, templo, templum, templum!, ?<br>templa, templorum, templis, templa, templa!, templis",
+  "templum, templi, templo, templum, templum!, templo<br>?, templorum, templis, templa, templa!, templis",
+  "templum, templi, templo, templum, templum!, templo<br>templa, ?, templis, templa, templa!, templis",
+  "templum, templi, templo, templum, templum!, templo<br>templa, templorum, ?, templa, templa!, templis",
+  "templum, templi, templo, templum, templum!, templo<br>templa, templorum, templis, ?, templa!, templis",
+  "templum, templi, templo, templum, templum!, templo<br>templa, templorum, templis, templa, ?, templis",
+  "templum, templi, templo, templum, templum!, templo<br>templa, templorum, templis, templa, templa!, ?",
 ];
 var answers = [
   "Schule",
@@ -312,6 +348,42 @@ var answers = [
   "amicos",
   "amici!",
   "amicis",
+  "magister",
+  "magistri",
+  "magistro",
+  "magistrum",
+  "magister!",
+  "magistro",
+  "magistri",
+  "magistrorum",
+  "magistris",
+  "magistros",
+  "magistri!",
+  "magistris",
+  "puer",
+  "pueri",
+  "puero",
+  "puerum",
+  "puer!",
+  "puero",
+  "pueri",
+  "puerorum",
+  "pueris",
+  "pueros",
+  "pueri!",
+  "pueris",
+  "templum",
+  "templi",
+  "templo",
+  "templum",
+  "templum!",
+  "templo",
+  "templa",
+  "templorum",
+  "templis",
+  "templa",
+  "templa!",
+  "templis",
 ];
 
 var altAnswers1 = [
@@ -464,6 +536,42 @@ var altAnswers1 = [
   "amicos",
   "amici!",
   "amicis",
+  "magister",
+  "magistri",
+  "magistro",
+  "magistrum",
+  "magister!",
+  "magistro",
+  "magistri",
+  "magistrorum",
+  "magistris",
+  "magistros",
+  "magistri!",
+  "magistris",
+  "puer",
+  "pueri",
+  "puero",
+  "puerum",
+  "puer!",
+  "puero",
+  "pueri",
+  "puerorum",
+  "pueris",
+  "pueros",
+  "pueri!",
+  "pueris",
+  "templum",
+  "templi",
+  "templo",
+  "templum",
+  "templum!",
+  "templo",
+  "templa",
+  "templorum",
+  "templis",
+  "templa",
+  "templa!",
+  "templis",
 ];
 
 function setCookie(cname, cvalue, exdays) {
@@ -510,6 +618,12 @@ if (points_string != "") {
       document.getElementById("problems").innerHTML +=
         "<br>" + questions[i] + " = " + answers[i];
     }
+  }
+}
+
+if (points.length < questions.length) {
+  for (var i = points.length; i < questions.length; i++) {
+    points.push(0);
   }
 }
 
@@ -630,7 +744,13 @@ document.getElementById("answer").addEventListener("keyup", function (event) {
 });
 
 function nextQuestion() {
-  chosen = Math.floor(Math.random() * questions.length);
+  var ch1 = Math.floor(Math.random() * questions.length);
+  var ch2 = Math.floor(Math.random() * questions.length);
+  if (points[ch1] < points[ch2]) {
+    chosen = ch1;
+  } else {
+    chosen = ch2;
+  }
   quest = questions[chosen];
   answ = answers[chosen];
   user_answ = "";

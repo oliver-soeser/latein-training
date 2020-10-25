@@ -14,11 +14,42 @@ function removeBanner() {
 var questions = [];
 var answers = [];
 var altAnswers1 = [];
+var points = [];
 
 $.getJSON("questions.json", function (data) {
   questions = data.questions;
   answers = data.answers;
   altAnswers1 = data.altAnswers1;
+  //
+  for (var i = 0; i < questions.length; i++) {
+    points.push(0);
+  }
+
+  var points_string = getCookie("points");
+
+  if (points_string != "") {
+    points = points_string.split(",");
+    document.getElementById("problems").innerHTML = "Problemwörter";
+    for (var i = 0; i < points.length; i++) {
+      points[i] = parseInt(points[i], 10);
+    }
+    for (var i = 0; i < points.length; i++) {
+      if (i >= 119) {
+        continue;
+      }
+      if (points[i] < 0) {
+        document.getElementById("problems").innerHTML +=
+          "<br>" + questions[i] + " = " + answers[i];
+      }
+    }
+  }
+
+  if (points.length < questions.length) {
+    for (var i = points.length; i < questions.length; i++) {
+      points.push(0);
+    }
+  }
+  //
   nextQuestion();
 }).fail(function () {
   console.log("An error has occurred.");
@@ -47,37 +78,6 @@ function getCookie(cname) {
     }
   }
   return "";
-}
-
-var points = [];
-
-for (var i = 0; i < questions.length; i++) {
-  points.push(0);
-}
-
-var points_string = getCookie("points");
-
-if (points_string != "") {
-  points = points_string.split(",");
-  document.getElementById("problems").innerHTML = "Problemwörter";
-  for (var i = 0; i < points.length; i++) {
-    points[i] = parseInt(points[i], 10);
-  }
-  for (var i = 0; i < points.length; i++) {
-    if (i >= 119) {
-      continue;
-    }
-    if (points[i] < 0) {
-      document.getElementById("problems").innerHTML +=
-        "<br>" + questions[i] + " = " + answers[i];
-    }
-  }
-}
-
-if (points.length < questions.length) {
-  for (var i = points.length; i < questions.length; i++) {
-    points.push(0);
-  }
 }
 
 var chosen = Math.floor(Math.random() * questions.length);

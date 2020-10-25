@@ -651,7 +651,7 @@ function checkAnswer() {
   ) {
     if (document.getElementById("message").innerHTML == "<br><br>") {
       correct++;
-      points[chosen] += 1;
+      points[chosen] = parseInt(points[chosen], 10) + 1;
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {
@@ -681,7 +681,7 @@ function checkAnswer() {
   } else {
     if (document.getElementById("message").innerHTML == "<br><br>") {
       incorrect++;
-      points[chosen] -= 1;
+      points[chosen] = parseInt(points[chosen], 10) - 1;
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {

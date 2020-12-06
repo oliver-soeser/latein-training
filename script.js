@@ -11,6 +11,8 @@ function removeBanner() {
     .parentNode.removeChild(document.getElementById("cookie-banner"));
 }
 
+removeBanner();
+
 var questions = [];
 var answers = [];
 var altAnswers1 = [];
@@ -34,9 +36,6 @@ $.getJSON("questions.json", function (data) {
       points[i] = parseInt(points[i], 10);
     }
     for (var i = 0; i < points.length; i++) {
-      if (i >= 119) {
-        continue;
-      }
       if (points[i] < 0) {
         document.getElementById("problems").innerHTML +=
           "<br>" + questions[i] + " = " + answers[i];
@@ -88,11 +87,7 @@ var user_answ = "";
 var correct = 0;
 var incorrect = 0;
 
-if (chosen >= 119) {
-  document.getElementById("prefix").innerHTML = "Vervollständige:";
-} else {
-  document.getElementById("prefix").innerHTML = "Übersetze:";
-}
+document.getElementById("prefix").innerHTML = "Übersetze:";
 
 document.getElementById("question").innerHTML = quest;
 
@@ -108,9 +103,6 @@ function checkAnswer() {
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {
-        if (i >= 119) {
-          continue;
-        }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
             "<br>" + questions[i] + " = " + answers[i];
@@ -138,9 +130,6 @@ function checkAnswer() {
       setCookie("points", points.toString(), 365);
       document.getElementById("problems").innerHTML = "Problemwörter";
       for (var i = 0; i < points.length; i++) {
-        if (i >= 119) {
-          continue;
-        }
         if (points[i] < 0) {
           document.getElementById("problems").innerHTML +=
             "<br>" + questions[i] + " = " + answers[i];
@@ -197,8 +186,10 @@ document.getElementById("answer").addEventListener("keyup", function (event) {
 });
 
 function nextQuestion() {
-  var ch1 = Math.floor(Math.random() * questions.length);
-  var ch2 = Math.floor(Math.random() * questions.length);
+  var ch1 =
+    Math.floor(Math.random() * (118 - questions.length)) + questions.length;
+  var ch2 =
+    Math.floor(Math.random() * (118 - questions.length)) + questions.length;
   if (points[ch1] < points[ch2]) {
     chosen = ch1;
   } else {
@@ -207,11 +198,7 @@ function nextQuestion() {
   quest = questions[chosen];
   answ = answers[chosen];
   user_answ = "";
-  if (chosen >= 119) {
-    document.getElementById("prefix").innerHTML = "Vervollständige:";
-  } else {
-    document.getElementById("prefix").innerHTML = "Übersetze:";
-  }
+  document.getElementById("prefix").innerHTML = "Übersetze:";
   document.getElementById("question").innerHTML = quest;
   document.getElementById("question").style =
     "font-weight: normal; color: black";
@@ -223,11 +210,7 @@ function setQuestion(n) {
   quest = questions[chosen];
   answ = answers[chosen];
   user_answ = "";
-  if (chosen >= 119) {
-    document.getElementById("prefix").innerHTML = "Vervollständige:";
-  } else {
-    document.getElementById("prefix").innerHTML = "Übersetze:";
-  }
+  document.getElementById("prefix").innerHTML = "Übersetze:";
   document.getElementById("question").innerHTML = quest;
   document.getElementById("question").style =
     "font-weight: normal; color: black";

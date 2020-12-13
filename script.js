@@ -188,9 +188,9 @@ document.getElementById("answer").addEventListener("keyup", function (event) {
 
 function nextQuestion() {
   var ch1 =
-    Math.floor(Math.random() * (118 - questions.length)) + questions.length;
+    Math.floor(Math.random() * (156 - questions.length)) + questions.length;
   var ch2 =
-    Math.floor(Math.random() * (118 - questions.length)) + questions.length;
+    Math.floor(Math.random() * (156 - questions.length)) + questions.length;
   if (points[ch1] < points[ch2]) {
     chosen = ch1;
   } else {

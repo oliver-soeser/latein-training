@@ -186,16 +186,73 @@ document.getElementById("answer").addEventListener("keyup", function (event) {
   }
 });
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
 function nextQuestion() {
-  var ch1 =
-    Math.floor(Math.random() * (156 - questions.length)) + questions.length;
-  var ch2 =
-    Math.floor(Math.random() * (156 - questions.length)) + questions.length;
+  var l = [];
+  l[0] = document.getElementById("l1").checked;
+  l[1] = document.getElementById("l2").checked;
+  l[2] = document.getElementById("l3").checked;
+  l[3] = document.getElementById("l4").checked;
+  l[4] = document.getElementById("l5").checked;
+  l[5] = document.getElementById("l6").checked;
+  l[6] = document.getElementById("l7").checked;
+  console.log(l);
+
+  var chl = getRandomInt(0, 7);
+
+  var tries = 0;
+
+  while (l[chl] != true) {
+    chl = getRandomInt(0, 7);
+    tries++;
+    if (tries >= 100) {
+      chl = 6;
+      break;
+    }
+  }
+
+  switch (chl) {
+    case 0:
+      var ch1 = getRandomInt(0, 33);
+      var ch2 = getRandomInt(0, 33);
+      break;
+    case 1:
+      var ch1 = getRandomInt(33, 63);
+      var ch2 = getRandomInt(33, 63);
+      break;
+    case 2:
+      var ch1 = getRandomInt(63, 90);
+      var ch2 = getRandomInt(63, 90);
+      break;
+    case 3:
+      var ch1 = getRandomInt(90, 119);
+      var ch2 = getRandomInt(90, 119);
+      break;
+    case 4:
+      var ch1 = getRandomInt(119, 156);
+      var ch2 = getRandomInt(119, 156);
+      break;
+    case 5:
+      var ch1 = getRandomInt(156, 183);
+      var ch2 = getRandomInt(156, 183);
+      break;
+    case 6:
+      var ch1 = getRandomInt(183, 212);
+      var ch2 = getRandomInt(183, 212);
+      break;
+  }
+
   if (points[ch1] < points[ch2]) {
     chosen = ch1;
   } else {
     chosen = ch2;
   }
+
   quest = questions[chosen];
   answ = answers[chosen];
   user_answ = "";

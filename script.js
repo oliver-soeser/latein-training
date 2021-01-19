@@ -201,17 +201,18 @@ function nextQuestion() {
   l[4] = document.getElementById("l5").checked;
   l[5] = document.getElementById("l6").checked;
   l[6] = document.getElementById("l7").checked;
+  l[7] = document.getElementById("l8").checked;
   console.log(l);
 
-  var chl = getRandomInt(0, 7);
+  var chl = getRandomInt(0, 8);
 
   var tries = 0;
 
   while (l[chl] != true) {
-    chl = getRandomInt(0, 7);
+    chl = getRandomInt(0, 8);
     tries++;
     if (tries >= 100) {
-      chl = 6;
+      chl = 7;
       break;
     }
   }
@@ -244,6 +245,10 @@ function nextQuestion() {
     case 6:
       var ch1 = getRandomInt(183, 212);
       var ch2 = getRandomInt(183, 212);
+      break;
+    case 7:
+      var ch1 = getRandomInt(212, 234);
+      var ch2 = getRandomInt(212, 234);
       break;
   }
 

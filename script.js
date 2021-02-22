@@ -202,9 +202,10 @@ function nextQuestion() {
   l[5] = document.getElementById("l6").checked;
   l[6] = document.getElementById("l7").checked;
   l[7] = document.getElementById("l8").checked;
+  l[8] = document.getElementById("l9").checked;
   console.log(l);
 
-  var chl = getRandomInt(0, 8);
+  var chl = getRandomInt(0, 9);
 
   var tries = 0;
 
@@ -212,7 +213,7 @@ function nextQuestion() {
     chl = getRandomInt(0, 8);
     tries++;
     if (tries >= 100) {
-      chl = 7;
+      chl = 8;
       break;
     }
   }
@@ -249,6 +250,10 @@ function nextQuestion() {
     case 7:
       var ch1 = getRandomInt(212, 234);
       var ch2 = getRandomInt(212, 234);
+      break;
+    case 8:
+      var ch1 = getRandomInt(234, 262);
+      var ch2 = getRandomInt(234, 262);
       break;
   }
 

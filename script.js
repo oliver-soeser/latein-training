@@ -18,7 +18,7 @@ var answers = [];
 var altAnswers1 = [];
 var points = [];
 
-$.getJSON("questions.json", function (data) {
+$.getJSON("questions_z1.json", function (data) {
   questions = data.questions;
   answers = data.answers;
   altAnswers1 = data.altAnswers1;
@@ -55,6 +55,7 @@ $.getJSON("questions.json", function (data) {
 });
 
 function setCookie(cname, cvalue, exdays) {
+  return;
   if (accept_cookies == false) {
     return;
   }
@@ -203,21 +204,23 @@ function nextQuestion() {
   l[6] = document.getElementById("l7").checked;
   l[7] = document.getElementById("l8").checked;
   l[8] = document.getElementById("l9").checked;
+  l[9] = document.getElementById("l10").checked;
   console.log(l);
 
-  var chl = getRandomInt(0, 9);
+  var chl = getRandomInt(0, 10);
 
   var tries = 0;
 
   while (l[chl] != true) {
-    chl = getRandomInt(0, 8);
+    chl = getRandomInt(0, 10);
     tries++;
     if (tries >= 100) {
-      chl = 8;
+      chl = 9;
       break;
     }
   }
-
+  //chosen = 157;
+  //while (answers[chosen] == "") {
   switch (chl) {
     case 0:
       var ch1 = getRandomInt(0, 33);
@@ -255,6 +258,10 @@ function nextQuestion() {
       var ch1 = getRandomInt(234, 262);
       var ch2 = getRandomInt(234, 262);
       break;
+    case 9:
+      var ch1 = getRandomInt(262, 286);
+      var ch2 = getRandomInt(262, 286);
+      break;
   }
 
   if (points[ch1] < points[ch2]) {
@@ -262,6 +269,7 @@ function nextQuestion() {
   } else {
     chosen = ch2;
   }
+  //}
 
   quest = questions[chosen];
   answ = answers[chosen];
@@ -273,7 +281,8 @@ function nextQuestion() {
   document.getElementById("message").innerHTML = "<br><br>";
   document.getElementById("answer").value = "";
 }
-function setQuestion(n) {
+
+/*function setQuestion(n) {
   chosen = n;
   quest = questions[chosen];
   answ = answers[chosen];
@@ -284,4 +293,4 @@ function setQuestion(n) {
     "font-weight: normal; color: black";
   document.getElementById("message").innerHTML = "<br><br>";
   document.getElementById("answer").value = "";
-}
+}*/

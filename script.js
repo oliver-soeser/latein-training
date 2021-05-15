@@ -205,21 +205,23 @@ function nextQuestion() {
   l[7] = document.getElementById("l8").checked;
   l[8] = document.getElementById("l9").checked;
   l[9] = document.getElementById("l10").checked;
+  l[10] = document.getElementById("l11").checked;
+  l[11] = document.getElementById("l12").checked;
   console.log(l);
 
-  var chl = getRandomInt(0, 10);
+  var chl = getRandomInt(0, 12);
 
   var tries = 0;
 
   while (l[chl] != true) {
-    chl = getRandomInt(0, 10);
+    chl = getRandomInt(0, 12);
     tries++;
     if (tries >= 100) {
-      chl = 9;
+      chl = 11;
       break;
     }
   }
-  //chosen = 157;
+  chosen = 157;
   //while (answers[chosen] == "") {
   switch (chl) {
     case 0:
@@ -261,6 +263,14 @@ function nextQuestion() {
     case 9:
       var ch1 = getRandomInt(262, 286);
       var ch2 = getRandomInt(262, 286);
+      break;
+    case 10:
+      var ch1 = getRandomInt(286, 312);
+      var ch2 = getRandomInt(286, 312);
+      break;
+    case 11:
+      var ch1 = getRandomInt(312, 336);
+      var ch2 = getRandomInt(312, 336);
       break;
   }
 

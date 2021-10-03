@@ -289,8 +289,8 @@ function nextQuestion() {
       var ch2 = getRandomInt(383, 411);
       break;
     case 15:
-      var ch1 = getRandomInt(411, 425);
-      var ch2 = getRandomInt(411, 425);
+      var ch1 = getRandomInt(411, 438);
+      var ch2 = getRandomInt(411, 438);
       break;
   }
 
